@@ -1,0 +1,13 @@
+﻿@typeparam T
+@inherits RsInputTextBase<T>
+
+<div class="form-control">
+    @if (!string.IsNullOrWhiteSpace(Label))
+    {
+        <label class="form-control-label" for="@Id">@Label</label>
+    }
+    <input class="form-control-input @CssClass" id="@Id" @bind="@CurrentValue" />
+    <div class="form-control-validation">
+        <ValidationMessage For="@ValidationFor" />
+    </div>
+</div>
