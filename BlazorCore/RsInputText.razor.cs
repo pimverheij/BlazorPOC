@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components.Forms;
 
 // https://chrissainty.com/building-custom-input-components-for-blazor-using-inputbase
 // https://github.com/chrissainty/BuildingCustomInputComponentsForBlazorUsingInputBase
-namespace ValidatiePOC.Blazor.Components
+namespace BlazorCore
 {
     public class RsInputTextBase<T> : InputBase<T>
     {
