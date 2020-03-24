@@ -15,7 +15,6 @@ namespace SharedModels
         public string Gemeente { get; set; }
         public string Land { get; set; }
         public bool IsBinnenlands => string.IsNullOrEmpty(Land) || Land.ToLower() == "nederland";
-        public Guid SelectedPerson { get; set; }
     }
 
     public class AdresValidator : AbstractValidator<AdresModel>

@@ -1,0 +1,14 @@
+E:\Projects\ValidatiePOC\Backend\ValidatieBackend\ValidatieBackend\bin\Debug\netcoreapp3.1\appsettings.Development.json
+E:\Projects\ValidatiePOC\Backend\ValidatieBackend\ValidatieBackend\bin\Debug\netcoreapp3.1\appsettings.json
+E:\Projects\ValidatiePOC\Backend\ValidatieBackend\ValidatieBackend\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+E:\Projects\ValidatiePOC\Backend\ValidatieBackend\ValidatieBackend\bin\Debug\netcoreapp3.1\ValidatieBackend.exe
+E:\Projects\ValidatiePOC\Backend\ValidatieBackend\ValidatieBackend\bin\Debug\netcoreapp3.1\FluentValidation.dll
+E:\Projects\ValidatiePOC\Backend\ValidatieBackend\ValidatieBackend\bin\Debug\netcoreapp3.1\SharedModels.dll
+E:\Projects\ValidatiePOC\Backend\ValidatieBackend\ValidatieBackend\bin\Debug\netcoreapp3.1\SharedModels.pdb
+E:\Projects\ValidatiePOC\Backend\ValidatieBackend\ValidatieBackend\obj\Debug\netcoreapp3.1\ValidatieBackend.csprojAssemblyReference.cache
+E:\Projects\ValidatiePOC\Backend\ValidatieBackend\ValidatieBackend\obj\Debug\netcoreapp3.1\ValidatieBackend.AssemblyInfoInputs.cache
+E:\Projects\ValidatiePOC\Backend\ValidatieBackend\ValidatieBackend\obj\Debug\netcoreapp3.1\ValidatieBackend.AssemblyInfo.cs
+E:\Projects\ValidatiePOC\Backend\ValidatieBackend\ValidatieBackend\obj\Debug\netcoreapp3.1\ValidatieBackend.RazorTargetAssemblyInfo.cache
+E:\Projects\ValidatiePOC\Backend\ValidatieBackend\ValidatieBackend\obj\Debug\netcoreapp3.1\ValidatieBackend.csproj.CopyComplete
+E:\Projects\ValidatiePOC\Backend\ValidatieBackend\ValidatieBackend\obj\Debug\netcoreapp3.1\staticwebassets\ValidatieBackend.StaticWebAssets.Manifest.cache
+E:\Projects\ValidatiePOC\Backend\ValidatieBackend\ValidatieBackend\obj\Debug\netcoreapp3.1\staticwebassets\ValidatieBackend.StaticWebAssets.xml
