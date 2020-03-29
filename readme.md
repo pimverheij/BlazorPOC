@@ -27,7 +27,7 @@ aantal interesant foefjes in RsInputText:
 * door trucje met overerving en naamgeving van class razor-pagina opgeknipt in opmaak en code-behind. Kan in de toekomst waarschijnlijk met partial classes. Nu nog bepalen of dit echt fijn is.
 * is eigenlijk een poging om de eigenlijk applicaties simpeler te maken door herhalingen in component te stoppen, zie Adres.razor om te zien hoe goed dat werkt.
 * Denk dat er nog wel iets te halen is, met defaults voor label en validatie, maar of het de moeite waard is?
-* Ik zou eigenlijk ook de CSS onderdeel van het component willen laten zijn. iig de sturende CSS (zoals bij adres de actief/inactief class), maar wil vast ook iets anders dan CSS (less? sass?) ben ene beetje out of my depth hier.
+* Ik zou eigenlijk ook de CSS onderdeel van het component willen laten zijn. iig de sturende CSS (zoals bij adres de actief/inactief class), maar wil vast ook iets anders dan CSS (less? sass?) ben een beetje out of my depth hier.
 
 _imports.razor is wel grappig, die had ik eerst neit door. Die zet eigenlij standaard een heleboel usings op alle razor-files. Schoon, maar verraderlijk lastig als je dat net door hebt, een component overzet naar een andere library en het werkt ineens niet meer!
 
@@ -57,3 +57,6 @@ https://chrissainty.com/introduction-to-blazor-component-testing/
 * CRUD afmaken op backend
 * frontend API-calls generiek wegwerken
 * meer componenten maken
+* CSS-tools vinden
+* iets doen met opmaak
+* frontend rond adres completer maken
