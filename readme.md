@@ -36,12 +36,12 @@ interessantse aan dit project is vooral hoe weinig er nog in zit. Ik heb zoveel 
 
 fluentvalidator is gelukkig ook geschikt gemaakt voor blazor, daarvoor gebruik ik https://github.com/ryanelian/FluentValidation.Blazor (via NuGet). Dat werkt echt heel soepel.
 Het kan met injection, maar ik heb een hekel aan veel specifieke injection-regels in je startup.js (en als ik het goed begrijp heb je er een nodig vor elke pagina). Dus gebruik ik nu:
-''' C#
+'''C#
 <FluentValidator Validator="validator"></FluentValidator>
 '''
 
 en in de 'code behind':
-''' C#
+'''C#
 private AdresValidator validator = new AdresValidator();
 '''
 
