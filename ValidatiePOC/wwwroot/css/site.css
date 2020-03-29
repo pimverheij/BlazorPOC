@@ -14,10 +14,6 @@ a, .btn-link {
     display: none;
 }
 
-.actief {
-    display: flex;
-}
-
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;

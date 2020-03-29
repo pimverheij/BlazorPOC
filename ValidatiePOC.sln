@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedModels", "SharedModel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSharedModels", "TestSharedModels\TestSharedModels.csproj", "{037A0695-8CF6-438F-8FDD-3566267BABB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorCore", "BlazorCore\BlazorCore.csproj", "{3AA36C41-CD26-44DA-AE98-445005E3A9A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorCore", "BlazorCore\BlazorCore.csproj", "{3AA36C41-CD26-44DA-AE98-445005E3A9A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestValisatiePOC", "TestValisatiePOC\TestValisatiePOC.csproj", "{9BA41648-541B-4AC3-9F38-4EBD0CB21DE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{3AA36C41-CD26-44DA-AE98-445005E3A9A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AA36C41-CD26-44DA-AE98-445005E3A9A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AA36C41-CD26-44DA-AE98-445005E3A9A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BA41648-541B-4AC3-9F38-4EBD0CB21DE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BA41648-541B-4AC3-9F38-4EBD0CB21DE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BA41648-541B-4AC3-9F38-4EBD0CB21DE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BA41648-541B-4AC3-9F38-4EBD0CB21DE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

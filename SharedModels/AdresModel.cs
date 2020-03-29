@@ -6,6 +6,7 @@ namespace SharedModels
 {
     public class AdresModel
     {
+        public int Id { get; set; }
         public string Straat { get; set; }
         public string AdresRegel1 { get; set; }
         public string AdresRegel2 { get; set; }

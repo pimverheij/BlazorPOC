@@ -1,35 +1,45 @@
 ﻿@page "/Adres"
+@using ValidatiePOC.services
+@inject IAdresService Service
 
-<EditForm Model="AdresModel" OnValidSubmit="HandleValidSubmit">
-    <FluentValidator Validator="validator"></FluentValidator>
-    <div class="@(AdresModel.IsBinnenlands ? "actief" : "inactief")">
-        <RsInputText @bind-Value="AdresModel.Straat" ValidationFor="@(() => AdresModel.Straat)" Label="Straat" />
-        <RsInputText @bind-Value="AdresModel.Huisnummer" ValidationFor="@(() => AdresModel.Huisnummer)" Label="Huisnummer" />
-        <RsInputText @bind-Value="AdresModel.HuisnummerToevoeging" ValidationFor="@(() => AdresModel.HuisnummerToevoeging)" Label="HuisnummerToevoeging" />
-        <RsInputText @bind-Value="AdresModel.PostCode" ValidationFor="@(() => AdresModel.PostCode)" Label="PostCode" />
-        <RsInputText @bind-Value="AdresModel.Gemeente" ValidationFor="@(() => AdresModel.Gemeente)" Label="Gemeente" />
-        <RsInputText @bind-Value="AdresModel.Land" ValidationFor="@(() => AdresModel.Land)" Label="Land" />
-    </div>
-    <div class="@(AdresModel.IsBinnenlands ? "inactief" : "actief")">
-        <RsInputText @bind-Value="AdresModel.AdresRegel1" ValidationFor="@(() => AdresModel.AdresRegel1)" Label="AdresRegel1" />
-        <RsInputText @bind-Value="AdresModel.AdresRegel2" ValidationFor="@(() => AdresModel.AdresRegel2)" Label="AdresRegel2" />
-        <RsInputText @bind-Value="AdresModel.PostCode" ValidationFor="@(() => AdresModel.PostCode)" Label="PostCode" />
-        <RsInputText @bind-Value="AdresModel.Land" ValidationFor="@(() => AdresModel.Land)" Label="Land" />
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">
-            <i class="fas fa-chevron-up"></i>
-            Submit
-        </button>
-    </div>
-</EditForm>
+@if (model != null)
+{
+    <EditForm Model="model" OnValidSubmit="HandleValidSubmit">
+        <FluentValidator Validator="validator"></FluentValidator>
+        <div class="@(model.IsBinnenlands ? "" : "inactief")">
+            <RsInputText @bind-Value="model.Straat" ValidationFor="@(() => model.Straat)" Label="Straat"/>
+            <RsInputText @bind-Value="model.Huisnummer" ValidationFor="@(() => model.Huisnummer)" Label="Huisnummer"/>
+            <RsInputText @bind-Value="model.HuisnummerToevoeging" ValidationFor="@(() => model.HuisnummerToevoeging)" Label="HuisnummerToevoeging"/>
+            <RsInputText @bind-Value="model.PostCode" ValidationFor="@(() => model.PostCode)" Label="PostCode"/>
+            <RsInputText @bind-Value="model.Gemeente" ValidationFor="@(() => model.Gemeente)" Label="Gemeente"/>
+            <RsInputText @bind-Value="model.Land" ValidationFor="@(() => model.Land)" Label="Land"/>
+        </div>
+        <div class="@(model.IsBinnenlands ? "inactief" : "")">
+            <RsInputText @bind-Value="model.AdresRegel1" ValidationFor="@(() => model.AdresRegel1)" Label="AdresRegel1"/>
+            <RsInputText @bind-Value="model.AdresRegel2" ValidationFor="@(() => model.AdresRegel2)" Label="AdresRegel2"/>
+            <RsInputText @bind-Value="model.PostCode" ValidationFor="@(() => model.PostCode)" Label="PostCode"/>
+            <RsInputText @bind-Value="model.Land" ValidationFor="@(() => model.Land)" Label="Land"/>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-chevron-up"></i>
+                Submit
+            </button>
+        </div>
+    </EditForm>
+}
 @code {
-    [Parameter]
-    public AdresModel AdresModel { get; set; } = new AdresModel();
-    private AdresValidator validator = new AdresValidator();
+    private AdresModel model;
+    private AdresValidator validator;
+
+    protected override async Task OnInitializedAsync()
+    {
+        model = await Service.GetAdres(1);
+        validator = new AdresValidator();
+    }
 
     public void HandleValidSubmit()
     {
-
+        Service.PostAdres(model);
     }
 }
