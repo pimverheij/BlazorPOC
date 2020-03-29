@@ -1,25 +1,25 @@
-#demo nieuwe tech
+# demo nieuwe tech
 Dit is een poging een stel leuke nieuwe technologien aan elkaar te koppelen.
 Ik wil daarme ervaring opdoen met alternatieve technologien
 maar ook een voorbeeld softewarearchitectuur opzetten op basis waarvan we kunnen kiezen
 
 **let op** in dit project zit ook een zelfstandige backend solution verstopt (Backend\ValidatieBackend)
 
-##technieken die ik tot nu toe gebruik heb:
+## technieken die ik tot nu toe gebruik heb:
 .net core
 asp.net core
 blazor
 fluentvalidation
 
 highlights:
-###SharedModels project
+### SharedModels project
 herbruikbare modellen + bijbehorende validaties, code op 1 plek gebruikt in front en backend
 complexe en toch leesbare validatie op postcode (afhankelijk van opgegeven land) werkt ook in frontend
 
-###SharedModelsTest project
+### SharedModelsTest project
 unittests op validaties (do I need to say more?)
 
-###BlazorCore project
+### BlazorCore project
 zelfstandige applicatie-onafhankelijke herbruikbare frontend-componenten
 Dit is als je ze zelf maakt, maar je kan ze natuurlijk ook (bij-)kopen
 
@@ -31,17 +31,17 @@ aantal interesant foefjes in RsInputText:
 
 _imports.razor is wel grappig, die had ik eerst neit door. Die zet eigenlij standaard een heleboel usings op alle razor-files. Schoon, maar verraderlijk lastig als je dat net door hebt, een component overzet naar een andere library en het werkt ineens niet meer!
 
-###ValidatiePOC
+### ValidatiePOC
 interessantse aan dit project is vooral hoe weinig er nog in zit. Ik heb zoveel mogelijk herbruikbare shit in libraries gezet, dit moet pure functionaliteit zijn. Vind ik al best aardig gelukt!
 
 fluentvalidator is gelukkig ook geschikt gemaakt voor blazor, daarvoor gebruik ik https://github.com/ryanelian/FluentValidation.Blazor (via NuGet). Dat werkt echt heel soepel.
 Het kan met injection, maar ik heb een hekel aan veel specifieke injection-regels in je startup.js (en als ik het goed begrijp heb je er een nodig vor elke pagina). Dus gebruik ik nu:
-'''C#
+''' C#
 <FluentValidator Validator="validator"></FluentValidator>
 '''
 
 en in de 'code behind':
-'''C#
+''' C#
 private AdresValidator validator = new AdresValidator();
 '''
 
