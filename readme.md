@@ -51,6 +51,9 @@ Dat regelt eigenlijk de hele client-side validatie!
 
 
 
-##todo:
-experimentele unit-tests van blazor-components aan de praat krijgen
+## todo:
+* experimentele unit-tests van blazor-components aan de praat krijgen
 https://chrissainty.com/introduction-to-blazor-component-testing/
+* CRUD afmaken op backend
+* frontend API-calls generiek wegwerken
+* meer componenten maken
