@@ -14,9 +14,9 @@ namespace ValidatieBackend.services
             Db = db;
         }
 
-        public AdresModel GetAdresById(int id)
+        public async Task<AdresModel> GetAdresById(int id)
         {
-            var adres = Db.Adressen.Find(id);
+            var adres = await Db.Adressen.FindAsync(id);
             if (adres == null) return null;
 
             return new AdresModel
@@ -32,7 +32,7 @@ namespace ValidatieBackend.services
             };
         }
 
-        public async Task<AdresModel> CreateAdres(AdresModel model)
+        public async Task<int> CreateAdres(AdresModel model)
         {
             var adres = new Adres
             {
@@ -48,8 +48,36 @@ namespace ValidatieBackend.services
             Db.Adressen.Add(adres);
             await Db.SaveChangesAsync();
 
-            model.Id = adres.Id;
-            return model;
+            return adres.Id;
+        }
+
+        public async Task<bool> UpdateAdres(AdresModel model)
+        {
+            var adres = await Db.Adressen.FindAsync(model.Id);
+            if (adres == null) return false;
+
+            adres.AdresRegel1 = model.AdresRegel1;
+            adres.AdresRegel2 = model.AdresRegel2;
+            adres.Gemeente = model.Gemeente;
+            adres.Huisnummer = model.Huisnummer;
+            adres.HuisnummerToevoeging = model.HuisnummerToevoeging;
+            adres.Land = model.Land;
+            adres.PostCode = model.PostCode;
+            adres.Straat = model.Straat;
+
+            await Db.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> DeleteAdresById(int id)
+        {
+            var adres = await Db.Adressen.FindAsync(id);
+            if (adres == null) return false;
+
+            Db.Adressen.Remove(adres);
+            await Db.SaveChangesAsync();
+
+            return true;
         }
     }
 }

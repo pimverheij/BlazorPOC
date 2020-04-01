@@ -1,36 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FluentValidation;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using SharedModels;
+using System.Threading.Tasks;
 using ValidatieBackend.services;
 
+// https://johnthiriet.com/efficient-api-calls/
 namespace ValidatieBackend.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class AdresController : ControllerBase
     {
-        private readonly ILogger<AdresController> logger;
         private IAdresService Service { get; set; }
 
 
-        public AdresController(ILogger<AdresController> logger, IAdresService adresService)
+        public AdresController(IAdresService adresService)
         {
-            this.logger = logger;
             Service = adresService;
         }
 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<AdresModel> Get(int id)
+        public async Task<ActionResult<AdresModel>> Get(int id)
         {
-            var result = Service.GetAdresById(id);
+            var result = await Service.GetAdresById(id);
             if (result == null)
             {
                 return NotFound();
@@ -40,17 +34,53 @@ namespace ValidatieBackend.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<AdresModel>> PostAdres(AdresModel model)
         {
             var validation = await new AdresValidator().ValidateAsync(model);
             if (!validation.IsValid)
             {
-                throw new ValidationException(validation.ToString());
+                return ValidationProblem(validation.ToString());
             }
 
-            var result = await Service.CreateAdres(model);
+            var id = await Service.CreateAdres(model);
+            return CreatedAtAction(nameof(Get), new {id});
+        }
 
-            return CreatedAtAction(nameof(Get), new {id = result.Id}, result);
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> PutAdres(AdresModel model)
+        {
+            var validation = await new AdresValidator().ValidateAsync(model);
+            if (!validation.IsValid)
+            {
+                return ValidationProblem(validation.ToString());
+            }
+
+            if (await Service.UpdateAdres(model))
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> DeleteAdres(int id)
+        {
+            if (await Service.DeleteAdresById(id))
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }
