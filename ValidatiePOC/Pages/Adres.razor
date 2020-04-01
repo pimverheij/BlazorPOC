@@ -1,6 +1,6 @@
 ﻿@page "/Adres"
-@using ValidatiePOC.services
-@inject IAdresService Service
+@using ValidatiePOC
+@inject IBackendWebApi WebApi
 
 @if (model != null)
 {
@@ -34,12 +34,12 @@
 
     protected override async Task OnInitializedAsync()
     {
-        model = await Service.GetAdres(1);
+        model = await WebApi.Get<AdresModel>("Adres/1");
         validator = new AdresValidator();
     }
 
     public void HandleValidSubmit()
     {
-        Service.PostAdres(model);
+        WebApi.Post("Adres", model);
     }
 }
