@@ -1,0 +1,34 @@
+
+<mat-card *ngIf="adres">
+  <mat-form-field>
+    <mat-label>Straat</mat-label>
+    <input matInput [(ngModel)]="adres.straat" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Huisnummer</mat-label>
+    <input matInput [(ngModel)]="adres.huisnummer" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Huisnummertoevoeging</mat-label>
+    <input matInput [(ngModel)]="adres.huisnummerToevoeging" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Postcode</mat-label>
+    <input matInput [(ngModel)]="adres.postCode" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Gemeente</mat-label>
+    <input matInput [(ngModel)]="adres.gemeente" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Land</mat-label>
+    <input matInput [(ngModel)]="adres.land" >
+  </mat-form-field>
+
+  <pre>{{adres|json}}</pre>
+</mat-card>
