@@ -2,6 +2,9 @@ import { Deserializable } from './deserializable.model';
 
 export class Adres implements Deserializable {
 
+  constructor(public land:string='Nederland'){
+  }
+
   deserialize(input: any): this {
     return Object.assign(this, input);
   }
@@ -13,9 +16,8 @@ export class Adres implements Deserializable {
     public huisnummer: number;
     public huisnummerToevoeging: string;
     public gemeente: string;
-    public land: string;
 
   public isBinnenlandsAdres() {
-    return this.land.toLowerCase() === 'nederland';
+    return this.land?.toLowerCase() === 'nederland' || !this.land;
   }
 }

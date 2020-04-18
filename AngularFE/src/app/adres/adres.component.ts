@@ -11,18 +11,32 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AdresComponent implements OnInit {
   adres: Adres;
+  submitButtonText: string;
 
   constructor(private adresService: AdresService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.adresService.getAdres(id).subscribe(result => this.adres = result);
+    if(id){
+      this.adresService.getAdres(id).subscribe(result => this.adres = result);
+      this.submitButtonText = 'Update adres';
+    }
+    else{
+      this.adres = new Adres();
+      this.submitButtonText = 'Voeg adres toe';
+    }
   }
 
   submitAdres(form: NgForm) {
-    if(form.valid)
+    if(!form.valid) return;
+
+    if(this.adres.id)
       this.adresService.updateAdres(this.adres).subscribe(
-        result => this.router.navigate(['adres-list'])
+        () => this.router.navigate(['adres-list'])
+      );
+    else
+      this.adresService.addAdres(this.adres).subscribe(
+        () => this.router.navigate(['adres-list'])
       );
   }
 

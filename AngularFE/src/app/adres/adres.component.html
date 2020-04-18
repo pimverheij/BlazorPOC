@@ -64,15 +64,12 @@
       </mat-error>
     </mat-form-field>
 
-    <button mat-raised-button type="submit" color="primary">Update adres</button>
-    <a mat-button [routerLink]="['/adres-list']">Terug naar overzicht</a>
+    <button mat-raised-button type="submit" color="primary">{{submitButtonText}}</button>
+    <a mat-raised-button [routerLink]="['/adres-list']" class="d-inline-block ml-2">Terug naar overzicht</a>
 
 </form>
+<hr/>
   <pre>Form valid: {{form.valid}}</pre>
-  <pre>
-    Form: {{form.value | json}}
-  </pre>
-  <pre>
-    Adres: {{adres|json}}
-  </pre>
+  <pre>Form: {{form.value | json}}</pre>
+  <pre>Adres: {{adres|json}}</pre>
 </mat-card>
