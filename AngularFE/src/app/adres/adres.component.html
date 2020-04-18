@@ -1,34 +1,78 @@
-
 <mat-card *ngIf="adres">
-  <mat-form-field>
-    <mat-label>Straat</mat-label>
-    <input matInput [(ngModel)]="adres.straat" >
-  </mat-form-field>
+  <form #form="ngForm" (ngSubmit)="submitAdres(form)">
+    <mat-form-field *ngIf="adres.isBinnenlandsAdres()">
+      <mat-label>Straat</mat-label>
+      <input matInput [(ngModel)]="adres.straat" name="straat" required>
+      <mat-error>
+        Vul een straat in
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Huisnummer</mat-label>
-    <input matInput [(ngModel)]="adres.huisnummer" >
-  </mat-form-field>
+    <mat-form-field *ngIf="adres.isBinnenlandsAdres()">
+      <mat-label>Huisnummer</mat-label>
+      <input matInput type="number" [(ngModel)]="adres.huisnummer" name="huisnummer" required pattern="[0-9]*">
+      <mat-error>
+        Vul een huisnummer in
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Huisnummertoevoeging</mat-label>
-    <input matInput [(ngModel)]="adres.huisnummerToevoeging" >
-  </mat-form-field>
+    <mat-form-field *ngIf="adres.isBinnenlandsAdres()">
+      <mat-label>Huisnummertoevoeging</mat-label>
+      <input matInput [(ngModel)]="adres.huisnummerToevoeging" name="huisnummerToevoeging">
+      <mat-error>
+        Vul een huisnummertoevoeging in
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Postcode</mat-label>
-    <input matInput [(ngModel)]="adres.postCode" >
-  </mat-form-field>
+    <mat-form-field *ngIf="!adres.isBinnenlandsAdres()">
+      <mat-label>Adresregel 1</mat-label>
+      <input matInput [(ngModel)]="adres.adresRegel1" name="adresRegel1" required>
+      <mat-error>
+        Vul een adres regel 1 in
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Gemeente</mat-label>
-    <input matInput [(ngModel)]="adres.gemeente" >
-  </mat-form-field>
+    <mat-form-field *ngIf="!adres.isBinnenlandsAdres()">
+      <mat-label>Adresregel 2</mat-label>
+      <input matInput [(ngModel)]="adres.adresRegel2" name="adresRegel2" required>
+      <mat-error>
+        Vul een adres regel 2 in
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Land</mat-label>
-    <input matInput [(ngModel)]="adres.land" >
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Postcode</mat-label>
+      <input matInput [(ngModel)]="adres.postCode" name="postCode" required [pattern]="getPostcodePattern()">
+      <mat-error>
+        Vul een geldige postcode in voor {{adres.land}}
+      </mat-error>
+    </mat-form-field>
 
-  <pre>{{adres|json}}</pre>
+    <mat-form-field *ngIf="adres.isBinnenlandsAdres()">
+      <mat-label>Gemeente</mat-label>
+      <input matInput [(ngModel)]="adres.gemeente" name="gemeente" required>
+      <mat-error>
+        Vul een gemeente in in
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Land</mat-label>
+      <input matInput [(ngModel)]="adres.land" name="land" required>
+      <mat-error>
+        Vul een land in
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" color="primary">Update adres</button>
+    <a mat-button [routerLink]="['/adres-list']">Terug naar overzicht</a>
+
+</form>
+  <pre>Form valid: {{form.valid}}</pre>
+  <pre>
+    Form: {{form.value | json}}
+  </pre>
+  <pre>
+    Adres: {{adres|json}}
+  </pre>
 </mat-card>

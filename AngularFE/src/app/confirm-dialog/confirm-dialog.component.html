@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Weet u het zeker?</h1>
+<div mat-dialog-content>
+  <p>{{data.title}}</p>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="close()">Annuleren</button>
+  <button mat-raised-button (click)="confirm()" color="warn">Ok</button>
+</div>
